@@ -1,8 +1,8 @@
 ---
-title: YouTubeTranscriber
-emoji: 📉
-colorFrom: red
-colorTo: green
+title: YouTube Transcriber
+emoji: ⏩📄
+colorFrom: green
+colorTo: purple
 sdk: gradio
 sdk_version: 4.42.0
 app_file: app.py
