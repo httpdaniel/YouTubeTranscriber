@@ -2,7 +2,7 @@
 title: YouTube Transcriber
 emoji: ⏩📄
 colorFrom: purple
-colorTo: grey
+colorTo: gray
 sdk: gradio
 sdk_version: 4.42.0
 app_file: app.py
