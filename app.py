@@ -11,10 +11,12 @@ client = InferenceClient(model=model_name)
 
 
 def transcribe_video(url):
+    print(f"YouTube URL: {url}")
     video_id = parse_youtube_url(url)
     if video_id:
         video_metadata = get_video_metadata(video_id)
         transcript_content = get_transcript_content(video_id)
+        print(f"Transcript Content: {transcript_content}")
         transcript_summary = summarise_transcript(transcript_content)
         return (
             f"Title: {video_metadata['title']}\nAuthor: {video_metadata['author']}",
@@ -57,6 +59,8 @@ def get_transcript_content(video_id):
         return []
 
     transcript = transcript_list.find_transcript(["en"])
+    print(f"Transcript: {transcript}")
+
     transcript_pieces: List[Dict[str, Any]] = transcript.fetch()
 
     transcript = " ".join(
@@ -65,6 +69,8 @@ def get_transcript_content(video_id):
             transcript_pieces,
         )
     )
+    print(f"Transcript: {transcript}")
+
     return transcript
 
 
