@@ -10,12 +10,23 @@ model_name = "mistralai/Mixtral-8x7B-Instruct-v0.1"
 client = InferenceClient(model=model_name)
 
 
+def langhchain_summary(link):
+    loader = YoutubeLoader.from_youtube_url(link, add_video_info=False)
+
+    documents = loader.load()
+
+    transcription = " ".join([doc.page_content for doc in documents])
+    print(f"Transcription: {transcription}")
+    return transcription
+
+
 def transcribe_video(url):
     print(f"YouTube URL: {url}")
     video_id = parse_youtube_url(url)
     if video_id:
         video_metadata = get_video_metadata(video_id)
-        transcript_content = get_transcript_content(video_id)
+        # transcript_content = get_transcript_content(video_id)
+        transcript_content = langhchain_summary(url)
         print(f"Transcript Content: {transcript_content}")
         transcript_summary = summarise_transcript(transcript_content)
         return (
