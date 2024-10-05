@@ -3,16 +3,27 @@ from urllib.parse import urlparse, parse_qs
 from pytube import YouTube
 from huggingface_hub import InferenceClient
 import gradio as gr
+from langchain_community.document_loaders import YoutubeLoader
 
 model_name = "mistralai/Mixtral-8x7B-Instruct-v0.1"
 client = InferenceClient(model=model_name)
+
+
+def langhchain_summary(link):
+    loader = YoutubeLoader.from_youtube_url(link, add_video_info=False)
+
+    documents = loader.load()
+
+    transcription = " ".join([doc.page_content for doc in documents])
+    return transcription
 
 
 def transcribe_video(url):
     video_id = parse_youtube_url(url)
     if video_id:
         video_metadata = get_video_metadata(video_id)
-        transcript_content = get_transcript_content(video_id)
+        # transcript_content = get_transcript_content(video_id)
+        transcript_content = langhchain_summary(url)
         transcript_summary = summarise_transcript(transcript_content)
         return (
             f"Title: {video_metadata['title']}\nAuthor: {video_metadata['author']}",
