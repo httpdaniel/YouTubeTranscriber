@@ -42,10 +42,12 @@ def get_video_metadata(video_id):
 
 
 def get_transcript_content(video_id):
-    transcript = YouTubeTranscriptApi.get_transcript(video_id)
-    transcript_content = parse_transcript(transcript)
-
-    return transcript_content
+    try:
+        transcript = YouTubeTranscriptApi.get_transcript(video_id)
+        transcript_content = parse_transcript(transcript)
+        return transcript_content
+    except Exception as e:
+        raise e
 
 
 def parse_transcript(transcript):
