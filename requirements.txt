@@ -4,3 +4,4 @@ huggingface-hub
 pytube
 urllib3
 youtube-transcript-api
+langchain-community
