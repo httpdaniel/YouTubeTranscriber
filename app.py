@@ -44,7 +44,11 @@ def get_video_metadata(video_id):
 def get_transcript_content(video_id):
     try:
         transcript = YouTubeTranscriptApi.get_transcript(
-            video_id, proxies={"http": "50.172.75.114:80"}
+            video_id,
+            proxies={
+                "http": "http://50.172.75.114:80",
+                "https": "https://50.172.75.114:80",
+            },
         )
         transcript_content = parse_transcript(transcript)
         return transcript_content
@@ -81,9 +85,7 @@ with gr.Blocks(theme=gr.themes.Base()) as demo:
     gr.Markdown(
         "<H3>Provide a link to a YouTube video and get a transcription and summary</H3>"
     )
-    gr.Markdown(
-        "<H6>This project uses the youtube_transcript_api to fetch a transcript from a YouTube link, pytube to get video metadata, and Mistral 7B to generate a summary.</H6>"
-    )
+    gr.Markdown("<H6>Due to YouTube </H6>")
 
     with gr.Row():
         with gr.Column(scale=1):
