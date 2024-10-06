@@ -75,12 +75,12 @@ def summarise_transcript(transcript_content):
 
 
 with gr.Blocks(theme=gr.themes.Base()) as demo:
-    gr.Markdown("<H1>YoutTube Transcriber & Summariser</H1>")
+    gr.Markdown("<H1>YoutTube Summariser</H1>")
     gr.Markdown(
         "<H3>Provide a link to a YouTube video and get a transcription and summary</H3>"
     )
     gr.Markdown(
-        "<H6>Update: Recently YouTube has been cracking down on requests and blacklisting known cloud providers. Unfortunately it seems that requsts to YouTube APIs from HuggingFace are currently blocked. If you would still like to try out the summariser, clone the repo and run it locally with gradio app.py</H6>"
+        "<H6>Update: Recently YouTube has been cracking down on requests and blacklisting known cloud providers. Unfortunately, it seems that requests to YouTube APIs from HuggingFace are currently blocked. If you would still like to try out the summariser, clone the repo and run it locally with gradio app.py</H6>"
     )
 
     with gr.Row():
