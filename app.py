@@ -7,6 +7,8 @@ import gradio as gr
 model_name = "mistralai/Mixtral-8x7B-Instruct-v0.1"
 client = InferenceClient(model=model_name)
 
+proxies = {"http": "socks5h://127.0.0.1:9050", "https": "socks5h://127.0.0.1:9050"}
+
 
 def transcribe_video(url):
     video_id = parse_youtube_url(url)
@@ -45,10 +47,7 @@ def get_transcript_content(video_id):
     try:
         transcript = YouTubeTranscriptApi.get_transcript(
             video_id,
-            proxies={
-                "http": "http://50.172.75.114:80",
-                "https": "https://50.172.75.114:80",
-            },
+            proxies=proxies,
         )
         transcript_content = parse_transcript(transcript)
         return transcript_content
@@ -85,7 +84,7 @@ with gr.Blocks(theme=gr.themes.Base()) as demo:
     gr.Markdown(
         "<H3>Provide a link to a YouTube video and get a transcription and summary</H3>"
     )
-    gr.Markdown("<H6>Due to YouTube </H6>")
+    # gr.Markdown("<H6>Due to YouTube </H6>")
 
     with gr.Row():
         with gr.Column(scale=1):
