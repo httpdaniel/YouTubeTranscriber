@@ -75,7 +75,7 @@ def summarise_transcript(transcript_content):
 
 
 with gr.Blocks(theme=gr.themes.Base()) as demo:
-    gr.Markdown("<H1>YoutTube Transcriber</H1>")
+    gr.Markdown("<H1>YoutTube Transcriber & Summariser</H1>")
     gr.Markdown(
         "<H3>Provide a link to a YouTube video and get a transcription and summary</H3>"
     )
