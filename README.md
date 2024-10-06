@@ -1,5 +1,5 @@
 ---
-title: YouTube Transcriber
+title: YouTube Transcriber & Summariser
 emoji: ⏩📄
 colorFrom: purple
 colorTo: gray
