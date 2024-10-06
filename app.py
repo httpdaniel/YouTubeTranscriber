@@ -7,8 +7,6 @@ import gradio as gr
 model_name = "mistralai/Mixtral-8x7B-Instruct-v0.1"
 client = InferenceClient(model=model_name)
 
-proxies = {"https": "http://185.159.153.234:80", "http": "http://185.159.153.234:80"}
-
 
 def transcribe_video(url):
     video_id = parse_youtube_url(url)
@@ -45,10 +43,7 @@ def get_video_metadata(video_id):
 
 def get_transcript_content(video_id):
     try:
-        transcript = YouTubeTranscriptApi.get_transcript(
-            video_id,
-            proxies=proxies,
-        )
+        transcript = YouTubeTranscriptApi.get_transcript(video_id)
         transcript_content = parse_transcript(transcript)
         return transcript_content
     except Exception as e:
