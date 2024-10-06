@@ -7,7 +7,7 @@ import gradio as gr
 model_name = "mistralai/Mixtral-8x7B-Instruct-v0.1"
 client = InferenceClient(model=model_name)
 
-proxies = {"https": "http://15.235.153.57:8089", "http": "http://15.235.153.57:8089"}
+proxies = {"https": "http://109.230.89.126:3128", "http": "http://109.230.89.126:3128"}
 
 
 def transcribe_video(url):
